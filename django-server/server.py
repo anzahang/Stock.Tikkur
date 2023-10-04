@@ -40,9 +40,12 @@ def get_latest_otp_from_email(service):
         if otp_matches:
             otpFinal = otp_matches[0]  # Return the first OTP found (if any)
 
-
-
-
 def WS_Authentication(email,password,otp):
-    pass
+    ws = Wsimple(email, password, otp) 
+
+    # always check if wealthsimple is working (return True if working or an error)
+    if ws.is_operational(): 
+        # check the current operation status of internal Wealthsimple Trade
+        print(ws.current_status())
+        
 
